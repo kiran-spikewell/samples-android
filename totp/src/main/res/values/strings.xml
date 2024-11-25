@@ -21,4 +21,9 @@
     <string name="otp_parsing_issuer_mismatch">Issuer in label not matching with issuer query parameter</string>
     <string name="otp_parsing_issuer_arg_missing">Issuer parameter provided without argument</string>
     <string name="otp_parsing_invalid_algorithm">Invalid algorithm in totp URI</string>
+    <string name="app_name">Browser sign in</string>
+    <string name="login_button">Login</string>
+    <string name="logout_of_browser_button">Logout of Browser</string>
+    <string name="have_account">Have an account?</string>
+    <string name="welcome_user">Welcome %1$s</string>
 </resources>

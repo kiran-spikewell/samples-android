@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    tools:context=".BrowserSignInActivity"
+    >
+
+        <TextView
+            android:id="@+id/status_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/login_button"
+            />
+
+        <Button
+            android:id="@+id/logout_of_browser_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/logout_of_browser_button"
+            />
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+</LinearLayout>

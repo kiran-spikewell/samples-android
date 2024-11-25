@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.okta.android.samples.browser_sign_in">
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+        
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".BrowserSignInApplication"
         android:name=".TotpApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
