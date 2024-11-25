@@ -12,9 +12,30 @@ buildscript {
         classpath libs.kotlin.gradle.plugin
         classpath libs.android.navigation.safe.args
         classpath libs.spotless
+        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+        implementation('androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1')
+        implementation('androidx.activity:activity-ktx:1.5.1')
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+}
+
+static def parseScheme(String uri) {
+    def index = uri.indexOf(':/')
+    if (index == -1) {
+        throw new IllegalStateException("Scheme is not in a valid format.")
+    }
+    return uri.substring(0, index)
+}
+
+android.defaultConfig.manifestPlaceholders = [
+  "webAuthenticationRedirectScheme": parseScheme(oktaProperties.getProperty('signInRedirectUri'))
+]
+
+android {
+    compileOptions {
+        coreLibraryDesugaringEnabled true
     }
 }
 
@@ -54,4 +75,15 @@ def configureSpotless(Project project) {
             }
         }
     }
+
 }
+
+def oktaProperties = new Properties()
+rootProject.file("okta.properties").withInputStream { oktaProperties.load(it) }
+android.defaultConfig {
+    buildConfigField "String", 'DISCOVERY_URL', "\"${oktaProperties.getProperty('discoveryUrl')}\""
+    buildConfigField "String", 'CLIENT_ID', "\"${oktaProperties.getProperty('clientId')}\""
+    buildConfigField "String", 'SIGN_IN_REDIRECT_URI', "\"${oktaProperties.getProperty('signInRedirectUri')}\""
+    buildConfigField "String", 'SIGN_OUT_REDIRECT_URI', "\"${oktaProperties.getProperty('signOutRedirectUri')}\""
+}
+
